@@ -1,30 +1,26 @@
-name: Deploy 
+name: Deploy
 
-on: 
-  push: 
-      branches:
-              -main
-
+on:
+    push:
+        branches:
+          - main
 
 jobs:
     deploy:
-          runs-on: ubuntu:latest
+        runs-on: ubuntu:latest
 
-          steps:
-              -name: checkout_code
-              uses: actions/checkout@v4 
+        steps:
+          - name: checkout_code
+            uses: actions/checkout@v4
 
-              -name: ssh
-              uses: appleboy/ssh-action@v1.0.3
-              with:
-                  host: {{secrets.SSH_HOST}}
-                  username: shubhu 
-                  key: {{secrets.SSH_KEY}}
-                  script: |
-                        cd /Users/shubhu/Desktop/pipelineTest/gitactions
-                        git pull
-                        npm install 
-                        pm2 restart 1 
-
-  
-      
+          - name: ssh
+            uses: appleboy/ssh-action@v1.0.3
+            with:
+                host: ${{secrets.SSH_HOST}}
+                username: shubhu
+                key: ${{secrets.SSH_KEY}}
+                script: |
+                    pcd /Users/shubhu/Desktop/pipelineTest/gitactions
+                    pgit pull
+                    pnpm install 
+                    pm2 restart 1 

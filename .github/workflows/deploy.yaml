@@ -18,15 +18,13 @@ jobs:
               uses: appleboy/ssh-action@v1.0.3
               with:
                   host: {{secrets.SSH_HOST}}
-                  username: ubuntu
+                  username: shubhu 
                   key: {{secrets.SSH_KEY}}
                   script: |
-                        cd /home/ubuntu/terminalNews/server
+                        cd /Users/shubhu/Desktop/pipelineTest/gitactions
                         git pull
-                        export NVM_DIR=~/.nvm
-                        source ~/.nvm/nvm.sh
-                        npm install --omit=dev
-                        pm2 restart all
+                        npm install 
+                        pm2 restart 1 
 
   
       
